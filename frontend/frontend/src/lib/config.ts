@@ -1,0 +1,1 @@
+export const SHORTLIST_THRESHOLD = 30;
