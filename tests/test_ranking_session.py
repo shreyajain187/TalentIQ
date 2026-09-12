@@ -1,6 +1,6 @@
 import unittest
 from ranking_session import RankingSession
-from test_matching_engine import FakeEmbedder, JD, resume
+from tests.test_matching_engine import FakeEmbedder, JD, resume
 
 
 class SessionTests(unittest.TestCase):

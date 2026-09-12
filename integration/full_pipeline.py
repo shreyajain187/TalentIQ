@@ -11,7 +11,7 @@ from integration.pipeline import (
 )
 
 # ============================================================
-# PERSON 2 - MATCHING / RANKING
+# PERSON 2 - MATCHING / RANKING / INTERVIEW QUESTIONS
 # ============================================================
 
 from ranking_session import RankingSession
@@ -35,11 +35,7 @@ DEFAULT_JD_PATH = (
     "data/jd/job_description_backend_engineer.pdf"
 )
 
-DEFAULT_RESUME_FOLDER = (
-    "data/resumes"
-)
-
-OUTPUT_FOLDER = "output"
+DEFAULT_RESUME_FOLDER = "data/resumes"
 
 FINAL_OUTPUT_PATH = (
     "output/final_results.json"
@@ -88,6 +84,49 @@ def count_parse_results(resume_results):
 
 
 # ============================================================
+# GENERATE INTERVIEW PLANS
+# ============================================================
+
+def generate_interview_plans(
+    session,
+    rankings,
+    max_questions=8
+):
+
+    interview_plans = {}
+
+    for row in rankings:
+
+        candidate_id = row.get(
+            "candidate_id"
+        )
+
+        if not candidate_id:
+            continue
+
+        try:
+
+            plan = session.interview_questions(
+                candidate_id,
+                max_questions=max_questions
+            )
+
+            interview_plans[
+                candidate_id
+            ] = plan
+
+        except ValueError as e:
+
+            print(
+                "      WARNING -> "
+                f"Interview questions failed for "
+                f"{candidate_id}: {e}"
+            )
+
+    return interview_plans
+
+
+# ============================================================
 # MAIN FULL PIPELINE
 # ============================================================
 
@@ -97,16 +136,16 @@ def run_full_pipeline(
 ):
 
     print()
-    print("=" * 65)
-    print("              TALENTIQ FULL PIPELINE")
-    print("=" * 65)
+    print("=" * 70)
+    print("                  TALENTIQ FULL PIPELINE")
+    print("=" * 70)
 
-    # --------------------------------------------------------
+    # ========================================================
     # STEP 1 - PERSON 1: PARSE JD
-    # --------------------------------------------------------
+    # ========================================================
 
     print()
-    print("[1/6] Parsing Job Description...")
+    print("[1/7] Parsing Job Description...")
 
     job = parse_job(
         jd_path
@@ -120,19 +159,21 @@ def run_full_pipeline(
         f"      Pages: {len(job['pages'])}"
     )
 
-    # --------------------------------------------------------
+    # ========================================================
     # STEP 2 - PERSON 1: PARSE RESUMES
-    # --------------------------------------------------------
+    # ========================================================
 
     print()
-    print("[2/6] Parsing resumes...")
+    print("[2/7] Parsing resumes...")
 
     resume_results = parse_all_resumes(
         resume_folder
     )
 
-    successful, failed = count_parse_results(
-        resume_results
+    successful, failed = (
+        count_parse_results(
+            resume_results
+        )
     )
 
     print(
@@ -143,12 +184,20 @@ def run_full_pipeline(
         f"      Failed:     {failed}"
     )
 
+    print(
+        f"      Total:      "
+        f"{len(resume_results)}"
+    )
+
     if successful == 0:
+
         raise RuntimeError(
             "No resumes were parsed successfully."
         )
 
-    # Display parsing failures but DO NOT crash
+    # Show parsing failures without killing
+    # the entire application.
+
     for item in resume_results:
 
         if item.get("status") != "success":
@@ -159,40 +208,36 @@ def run_full_pipeline(
                 f"{item.get('error', 'Unknown parsing error')}"
             )
 
-    # --------------------------------------------------------
+    # ========================================================
+    # STEP 3 - BUILD SHARED PAYLOAD
+    # ========================================================
+
+    print()
+    print("[3/7] Building shared parser payload...")
+
     # IMPORTANT:
     #
-    # Keep the ORIGINAL wrapped resume structure.
+    # Keep the wrapped resume structure returned
+    # by parse_all_resumes().
     #
-    # Example:
-    #
-    # {
-    #     "status": "success",
-    #     "data": {
-    #         "id": "...",
-    #         "filename": "...",
-    #         ...
-    #     }
-    # }
-    #
-    # Person 2's parser adapter can consume this format.
-    # Person 3 explicitly supports it using:
-    #
-    # source = wrapped.get("data", wrapped)
-    #
-    # --------------------------------------------------------
+    # Person 2's parser_adapter handles it.
+    # Person 3's team integration also supports it.
 
     payload = {
         "job": job,
         "resumes": resume_results
     }
 
-    # --------------------------------------------------------
-    # STEP 3 - LOAD MATCHING CRITERIA
-    # --------------------------------------------------------
+    print(
+        "      Payload ready."
+    )
+
+    # ========================================================
+    # STEP 4 - LOAD CRITERIA
+    # ========================================================
 
     print()
-    print("[3/6] Loading matching criteria...")
+    print("[4/7] Loading matching criteria...")
 
     criteria = load_criteria()
 
@@ -200,12 +245,13 @@ def run_full_pipeline(
         f"      OK -> {CRITERIA_PATH}"
     )
 
-    # --------------------------------------------------------
-    # STEP 4 - PERSON 2: MATCH + RANK
-    # --------------------------------------------------------
+    # ========================================================
+    # STEP 5 - PERSON 2:
+    # MATCH + SCORE + RANK
+    # ========================================================
 
     print()
-    print("[4/6] Running matching engine...")
+    print("[5/7] Running matching engine...")
 
     session = RankingSession()
 
@@ -215,7 +261,7 @@ def run_full_pipeline(
     )
 
     print(
-        f"      Ranking complete."
+        "      Ranking complete."
     )
 
     print(
@@ -224,7 +270,7 @@ def run_full_pipeline(
     )
 
     # --------------------------------------------------------
-    # SHOW RANKING SUMMARY
+    # DISPLAY RANKING SUMMARY
     # --------------------------------------------------------
 
     ranked_candidates = [
@@ -233,26 +279,50 @@ def run_full_pipeline(
         if row.get("rank") is not None
     ]
 
-    print()
-
     if ranked_candidates:
 
-        print("      Ranking:")
+        print()
+        print("      RANKING")
+        print("      " + "-" * 55)
 
         for row in ranked_candidates:
 
             print(
                 f"      #{row['rank']} "
                 f"{row['filename']} "
-                f"-> {row['final_score']:.2f}/100"
+                f"-> "
+                f"{row['final_score']:.2f}/100"
             )
 
-    # --------------------------------------------------------
-    # STEP 5 - PERSON 3: EXPLANATIONS
-    # --------------------------------------------------------
+    # ========================================================
+    # PERSON 2 - INTERVIEW QUESTIONS
+    # ========================================================
 
     print()
-    print("[5/6] Building explanations...")
+    print(
+        "      Generating interview plans..."
+    )
+
+    interview_plans = (
+        generate_interview_plans(
+            session,
+            rankings,
+            max_questions=8
+        )
+    )
+
+    print(
+        f"      Interview plans generated: "
+        f"{len(interview_plans)}"
+    )
+
+    # ========================================================
+    # STEP 6 - PERSON 3:
+    # EXPLANATIONS + EVIDENCE
+    # ========================================================
+
+    print()
+    print("[6/7] Building explanations...")
 
     explanation_view = (
         build_team_explanations(
@@ -270,16 +340,19 @@ def run_full_pipeline(
         f"{len(explanation_view.get('top_three', []))}"
     )
 
-    # --------------------------------------------------------
-    # STEP 6 - BUILD FINAL OUTPUT
-    # --------------------------------------------------------
+    # ========================================================
+    # STEP 7 - FINAL OUTPUT
+    # ========================================================
 
     print()
-    print("[6/6] Building final output...")
+    print("[7/7] Building final output...")
 
     final_result = {
 
-        # Person 1
+        # ====================================================
+        # PERSON 1
+        # ====================================================
+
         "job": job,
 
         "resumes": resume_results,
@@ -290,21 +363,47 @@ def run_full_pipeline(
             "total": len(resume_results)
         },
 
-        # Person 2
+        # ====================================================
+        # PERSON 2
+        # ====================================================
+
         "rankings": rankings,
 
-        # Person 3
-        "explanations": explanation_view,
-
-        # Convenient field for Person 4
-        "top_three": explanation_view.get(
-            "top_three",
-            []
+        "interview_plans": (
+            interview_plans
         ),
 
-        "unranked": explanation_view.get(
-            "unranked",
-            []
+        # ====================================================
+        # PERSON 3
+        # ====================================================
+
+        "explanations": (
+            explanation_view
+        ),
+
+        # ====================================================
+        # PERSON 4 CONVENIENCE FIELDS
+        # ====================================================
+
+        "top_three": (
+            explanation_view.get(
+                "top_three",
+                []
+            )
+        ),
+
+        "unranked": (
+            explanation_view.get(
+                "unranked",
+                []
+            )
+        ),
+
+        "validation": (
+            explanation_view.get(
+                "validation",
+                []
+            )
         )
     }
 
@@ -313,9 +412,9 @@ def run_full_pipeline(
     )
 
     print()
-    print("=" * 65)
-    print("              PIPELINE COMPLETE")
-    print("=" * 65)
+    print("=" * 70)
+    print("                  PIPELINE COMPLETE")
+    print("=" * 70)
     print()
 
     return final_result
@@ -358,6 +457,135 @@ def save_final_result(
 
 
 # ============================================================
+# DISPLAY TOP CANDIDATES
+# ============================================================
+
+def display_top_candidates(
+    result
+):
+
+    top_three = result.get(
+        "top_three",
+        []
+    )
+
+    if not top_three:
+
+        print(
+            "No ranked candidates "
+            "were available."
+        )
+
+        return
+
+    print()
+    print("TOP CANDIDATES")
+    print("=" * 70)
+
+    for candidate in top_three:
+
+        print()
+
+        print(
+            candidate["summary"]
+        )
+
+        print(
+            f"Resume: "
+            f"{candidate['filename']}"
+        )
+
+        # ----------------------------------------------------
+        # REQUIRED GAPS
+        # ----------------------------------------------------
+
+        gaps = candidate.get(
+            "required_gaps",
+            []
+        )
+
+        if gaps:
+
+            print(
+                "Required gaps:"
+            )
+
+            for gap in gaps:
+
+                print(
+                    f"  - {gap}"
+                )
+
+        else:
+
+            print(
+                "Required gaps: None"
+            )
+
+        # ----------------------------------------------------
+        # VERIFIED MATCHES
+        # ----------------------------------------------------
+
+        matches = candidate.get(
+            "matches",
+            []
+        )
+
+        print(
+            f"Verified matches: "
+            f"{len(matches)}"
+        )
+
+        # ----------------------------------------------------
+        # PERSON 2 INTERVIEW PLAN
+        # ----------------------------------------------------
+
+        candidate_id = candidate.get(
+            "resume_id"
+        )
+
+        plan = (
+            result
+            .get(
+                "interview_plans",
+                {}
+            )
+            .get(
+                candidate_id
+            )
+        )
+
+        if plan:
+
+            questions = plan.get(
+                "questions",
+                []
+            )
+
+            print(
+                f"Interview questions: "
+                f"{len(questions)}"
+            )
+
+            # Display first 3 in terminal.
+            # All questions remain in JSON.
+
+            for question in questions[:3]:
+
+                print(
+                    "  - "
+                    + question.get(
+                        "question",
+                        ""
+                    )
+                )
+
+        print(
+            "-" * 70
+        )
+
+
+# ============================================================
 # PROGRAM ENTRY POINT
 # ============================================================
 
@@ -365,78 +593,50 @@ if __name__ == "__main__":
 
     try:
 
-        result = run_full_pipeline()
+        # ----------------------------------------------------
+        # RUN COMPLETE PIPELINE
+        # ----------------------------------------------------
+
+        result = (
+            run_full_pipeline()
+        )
+
+        # ----------------------------------------------------
+        # SAVE JSON
+        # ----------------------------------------------------
 
         save_final_result(
             result
         )
 
+        # ----------------------------------------------------
+        # TERMINAL SUMMARY
+        # ----------------------------------------------------
+
         print()
         print(
-            "SUCCESS: TalentIQ pipeline completed."
-        )
-
-        print(
-            "Final output:"
-        )
-
-        print(
-            FINAL_OUTPUT_PATH
+            "SUCCESS: TalentIQ pipeline "
+            "completed."
         )
 
         print()
 
-        top_three = result.get(
-            "top_three",
-            []
+        print(
+            f"Final output -> "
+            f"{FINAL_OUTPUT_PATH}"
         )
 
-        if top_three:
+        # ----------------------------------------------------
+        # SHOW TOP CANDIDATES
+        # ----------------------------------------------------
 
-            print("TOP CANDIDATES")
-            print("-" * 65)
+        display_top_candidates(
+            result
+        )
 
-            for candidate in top_three:
-
-                print(
-                    candidate["summary"]
-                )
-
-                print(
-                    f"Resume: "
-                    f"{candidate['filename']}"
-                )
-
-                gaps = candidate.get(
-                    "required_gaps",
-                    []
-                )
-
-                if gaps:
-
-                    print(
-                        "Required gaps:"
-                    )
-
-                    for gap in gaps:
-                        print(
-                            f"  - {gap}"
-                        )
-
-                else:
-
-                    print(
-                        "Required gaps: None"
-                    )
-
-                print()
-
-        else:
-
-            print(
-                "No ranked candidates "
-                "were available."
-            )
+    # ========================================================
+    # FRIENDLY ERRORS
+    # ========================================================
 
     except FileNotFoundError as e:
 
@@ -444,6 +644,7 @@ if __name__ == "__main__":
         print(
             "FILE ERROR:"
         )
+
         print(e)
 
     except ValueError as e:
@@ -452,6 +653,7 @@ if __name__ == "__main__":
         print(
             "VALIDATION ERROR:"
         )
+
         print(e)
 
     except Exception as e:
@@ -460,8 +662,10 @@ if __name__ == "__main__":
         print(
             "PIPELINE ERROR:"
         )
+
         print(
             f"{type(e).__name__}: {e}"
         )
 
+        # Keep traceback during development.
         raise

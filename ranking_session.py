@@ -2,6 +2,7 @@
 from copy import deepcopy
 from matching_engine import LocalEmbedder, evaluate_candidates, rerank_candidates
 from parser_adapter import unpack_combined
+from interview_questions import generate_interview_questions
 
 
 class RankingSession:
@@ -40,3 +41,12 @@ class RankingSession:
     @property
     def results(self):
         return deepcopy(self._results) if self._results is not None else None
+
+    def interview_questions(self, candidate_id, max_questions=8):
+        """Return a fresh interview plan for a candidate in this session."""
+        if self._results is None:
+            raise ValueError('Evaluate parsed JD/resumes before requesting interview questions.')
+        for result in self._results:
+            if result['candidate_id'] == candidate_id:
+                return generate_interview_questions(result, max_questions)
+        raise ValueError(f'Unknown candidate ID: {candidate_id}')

@@ -2,7 +2,7 @@ import copy
 import unittest
 from parser_adapter import normalize_document, unpack_combined
 from matching_engine import evaluate_candidates, match_skills
-from test_matching_engine import FakeEmbedder, JD, resume
+from tests.test_matching_engine import FakeEmbedder, JD, resume
 
 
 class ParserTests(unittest.TestCase):
