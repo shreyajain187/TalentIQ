@@ -1,0 +1,309 @@
+{
+  "top_three": [
+    {
+      "resume_id": "25754e1b-58ed-43c6-a213-be05772c1d90",
+      "filename": "resume_01_aarav_mehta.pdf",
+      "summary": "Ranked #1 with a match score of 61.55/100 under the current weights.",
+      "matches": [
+        {
+          "skill": "Java",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "Java is explicitly mentioned on resume page 1 under Summary.",
+          "evidence": [
+            {
+              "filename": "resume_01_aarav_mehta.pdf",
+              "page": 1,
+              "section": "summary",
+              "quote": "Computer Science graduate focused on backend engineering with project and internship experience building Java",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "Spring Boot",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "Spring Boot is explicitly mentioned on resume page 1 under Skills.",
+          "evidence": [
+            {
+              "filename": "resume_01_aarav_mehta.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, Spring Boot, REST API, SQL, PostgreSQL, MySQL, Git, GitHub, Docker, AWS, Microservices, Python",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "REST APIs",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "REST APIs is explicitly mentioned on resume page 1 under Summary.",
+          "evidence": [
+            {
+              "filename": "resume_01_aarav_mehta.pdf",
+              "page": 1,
+              "section": "summary",
+              "quote": "services and REST APIs.",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "SQL",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "SQL is explicitly mentioned on resume page 1 under Skills.",
+          "evidence": [
+            {
+              "filename": "resume_01_aarav_mehta.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, Spring Boot, REST API, SQL, PostgreSQL, MySQL, Git, GitHub, Docker, AWS, Microservices, Python",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "Git",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "Git is explicitly mentioned on resume page 1 under Skills.",
+          "evidence": [
+            {
+              "filename": "resume_01_aarav_mehta.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, Spring Boot, REST API, SQL, PostgreSQL, MySQL, Git, GitHub, Docker, AWS, Microservices, Python",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "Docker",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "Docker is explicitly mentioned on resume page 1 under Skills.",
+          "evidence": [
+            {
+              "filename": "resume_01_aarav_mehta.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, Spring Boot, REST API, SQL, PostgreSQL, MySQL, Git, GitHub, Docker, AWS, Microservices, Python",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "AWS | Azure | Google Cloud",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "AWS is explicitly mentioned on resume page 1 under Skills. This matches the alternative requirement: AWS | Azure | Google Cloud.",
+          "evidence": [
+            {
+              "filename": "resume_01_aarav_mehta.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, Spring Boot, REST API, SQL, PostgreSQL, MySQL, Git, GitHub, Docker, AWS, Microservices, Python",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "Microservices",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "Microservices is explicitly mentioned on resume page 1 under Skills.",
+          "evidence": [
+            {
+              "filename": "resume_01_aarav_mehta.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, Spring Boot, REST API, SQL, PostgreSQL, MySQL, Git, GitHub, Docker, AWS, Microservices, Python",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "Python | JavaScript",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "Python is explicitly mentioned on resume page 1 under Skills. This matches the alternative requirement: Python | JavaScript.",
+          "evidence": [
+            {
+              "filename": "resume_01_aarav_mehta.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, Spring Boot, REST API, SQL, PostgreSQL, MySQL, Git, GitHub, Docker, AWS, Microservices, Python",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        }
+      ],
+      "required_gaps": [],
+      "flags": [
+        "Representative skill excerpts do not establish implementation depth; listed-only versus demonstrated status has not been assessed."
+      ],
+      "questions": [
+        "Your resume mentions Java on page 1. Describe your direct experience and personal contribution using it.",
+        "Your resume mentions Spring Boot on page 1. Describe your direct experience and personal contribution using it.",
+        "Your resume mentions REST APIs on page 1. Describe your direct experience and personal contribution using it."
+      ],
+      "score_contributions": {
+        "semantic": 14.205244899999999,
+        "required_skills": 30.0,
+        "preferred_skills": 10.00000005,
+        "experience": 4.1221971,
+        "projects": 3.2219186000000004
+      },
+      "effective_weights": {
+        "semantic": 0.35,
+        "required_skills": 0.3,
+        "preferred_skills": 0.15,
+        "experience": 0.1,
+        "projects": 0.1
+      }
+    },
+    {
+      "resume_id": "bb6ec292-39c2-4790-85e2-feab78974ffe",
+      "filename": "resume_02_diya_sharma.pdf",
+      "summary": "Ranked #2 with a match score of 50.51/100 under the current weights.",
+      "matches": [
+        {
+          "skill": "Java",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "Java is explicitly mentioned on resume page 1 under Skills.",
+          "evidence": [
+            {
+              "filename": "resume_02_diya_sharma.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, JavaScript, React, Node.js, Express.js, REST API, SQL, MySQL, Git, GitHub, Docker, HTML, CSS",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "REST APIs",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "REST APIs is explicitly mentioned on resume page 1 under Skills.",
+          "evidence": [
+            {
+              "filename": "resume_02_diya_sharma.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, JavaScript, React, Node.js, Express.js, REST API, SQL, MySQL, Git, GitHub, Docker, HTML, CSS",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "SQL",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "SQL is explicitly mentioned on resume page 1 under Skills.",
+          "evidence": [
+            {
+              "filename": "resume_02_diya_sharma.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, JavaScript, React, Node.js, Express.js, REST API, SQL, MySQL, Git, GitHub, Docker, HTML, CSS",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "Git",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "Git is explicitly mentioned on resume page 1 under Skills.",
+          "evidence": [
+            {
+              "filename": "resume_02_diya_sharma.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, JavaScript, React, Node.js, Express.js, REST API, SQL, MySQL, Git, GitHub, Docker, HTML, CSS",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "Docker",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "Docker is explicitly mentioned on resume page 1 under Skills.",
+          "evidence": [
+            {
+              "filename": "resume_02_diya_sharma.pdf",
+              "page": 1,
+              "section": "skills",
+              "quote": "Java, JavaScript, React, Node.js, Express.js, REST API, SQL, MySQL, Git, GitHub, Docker, HTML, CSS",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        },
+        {
+          "skill": "Python | JavaScript",
+          "match_type": "explicit",
+          "evidence_level": "not_assessed",
+          "text": "JavaScript is explicitly mentioned on resume page 1 under Summary. This matches the alternative requirement: Python | JavaScript.",
+          "evidence": [
+            {
+              "filename": "resume_02_diya_sharma.pdf",
+              "page": 1,
+              "section": "summary",
+              "quote": "Entry-level full-stack developer with strong JavaScript experience and growing backend development skills.",
+              "verified_against": "parsed_page_text"
+            }
+          ]
+        }
+      ],
+      "required_gaps": [
+        "Spring Boot: no evidence found by the matcher in the supplied resume."
+      ],
+      "flags": [
+        "Representative skill excerpts do not establish implementation depth; listed-only versus demonstrated status has not been assessed."
+      ],
+      "questions": [
+        "The supplied resume evidence does not show Spring Boot. Have you used it in coursework or a project? Describe your contribution.",
+        "Your resume mentions Java on page 1. Describe your direct experience and personal contribution using it.",
+        "Your resume mentions REST APIs on page 1. Describe your direct experience and personal contribution using it."
+      ],
+      "score_contributions": {
+        "semantic": 14.924255149999999,
+        "required_skills": 24.0,
+        "preferred_skills": 4.99999995,
+        "experience": 3.1274286,
+        "projects": 3.4612086
+      },
+      "effective_weights": {
+        "semantic": 0.35,
+        "required_skills": 0.3,
+        "preferred_skills": 0.15,
+        "experience": 0.1,
+        "projects": 0.1
+      }
+    }
+  ],
+  "unranked": [],
+  "validation": [
+    "Checked score arithmetic, ranking order and missing-skill consistency for 2 candidates."
+  ],
+  "scope": "Checks against supplied parsed text, not original PDFs. Skill coverage uses Person 2's selected criteria, not every JD qualification.",
+  "comparison": {
+    "candidate_a": "25754e1b-58ed-43c6-a213-be05772c1d90",
+    "candidate_b": "bb6ec292-39c2-4790-85e2-feab78974ffe",
+    "score_difference": 11.036499999999997,
+    "contribution_differences": {
+      "semantic": -0.7190102500000002,
+      "required_skills": 6.0,
+      "preferred_skills": 5.0000001,
+      "experience": 0.9947685000000002,
+      "projects": -0.23928999999999956
+    },
+    "explanation": "Positive differences favor candidate A; negative differences favor candidate B. Values are weighted score points, not probabilities."
+  }
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "resume_01",
+    "filename": "synthetic_resume_01.pdf",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Synthetic Candidate 1\nSkills\nJava, SQL"
+      },
+      {
+        "page": 2,
+        "text": "Projects\nBuilt a Java inventory application. Wrote SQL queries for reports."
+      }
+    ],
+    "fullText": "Synthetic Candidate 1\nSkills\nJava, SQL\nProjects\nBuilt a Java inventory application. Wrote SQL queries for reports.",
+    "sections": {
+      "skills": "Java, SQL",
+      "experience": "",
+      "education": "",
+      "projects": "Built a Java inventory application. Wrote SQL queries for reports."
+    }
+  },
+  {
+    "id": "resume_02",
+    "filename": "synthetic_resume_02.pdf",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Synthetic Candidate 2\nSkills\nJava, SQL, Docker"
+      },
+      {
+        "page": 2,
+        "text": ""
+      }
+    ],
+    "fullText": "Synthetic Candidate 2\nSkills\nJava, SQL, Docker\n",
+    "sections": {
+      "skills": "Java, SQL, Docker",
+      "experience": "",
+      "education": "",
+      "projects": ""
+    }
+  },
+  {
+    "id": "resume_03",
+    "filename": "synthetic_resume_03.pdf",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Synthetic Candidate 3\nSkills\nJava"
+      },
+      {
+        "page": 2,
+        "text": "Projects\nBuilt reports using PostgreSQL queries."
+      }
+    ],
+    "fullText": "Synthetic Candidate 3\nSkills\nJava\nProjects\nBuilt reports using PostgreSQL queries.",
+    "sections": {
+      "skills": "Java",
+      "experience": "",
+      "education": "",
+      "projects": "Built reports using PostgreSQL queries."
+    }
+  },
+  {
+    "id": "resume_04",
+    "filename": "synthetic_resume_04.pdf",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Synthetic Candidate 4\nSkills\nJava"
+      },
+      {
+        "page": 2,
+        "text": "Projects\nBuilt a Java calculator."
+      }
+    ],
+    "fullText": "Synthetic Candidate 4\nSkills\nJava\nProjects\nBuilt a Java calculator.",
+    "sections": {
+      "skills": "Java",
+      "experience": "",
+      "education": "",
+      "projects": "Built a Java calculator."
+    }
+  },
+  {
+    "id": "resume_05",
+    "filename": "synthetic_resume_05.pdf",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Synthetic Candidate 5\nSkills\n"
+      },
+      {
+        "page": 2,
+        "text": ""
+      }
+    ],
+    "fullText": "Synthetic Candidate 5\nSkills\n\n",
+    "sections": {
+      "skills": "",
+      "experience": "",
+      "education": "",
+      "projects": ""
+    }
+  }
+]

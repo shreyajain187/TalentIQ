@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local ML model - download separately
+models/
+
+# Temporary/cache files
+.cache/
+*.log
+
+# Generated output
+output/*.json
+
+# Environment/secrets
+.env
+*.env

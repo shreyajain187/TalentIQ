@@ -1,0 +1,11 @@
+{
+  "required_skills": ["Java", "Spring Boot", "REST APIs", "SQL", "Git"],
+  "preferred_skills": ["Docker", "Kubernetes", "AWS | Azure | Google Cloud", "Microservices", "Python | JavaScript", "Jenkins | GitHub Actions"],
+  "notes": [
+    "Technical requirements selected from this JD; recruiter can edit them.",
+    "Cloud alternatives cover AWS, Azure, and Google Cloud for this run; extend for other platforms when needed.",
+    "Python or JavaScript and Jenkins or GitHub Actions each count as one preferred criterion.",
+    "PostgreSQL and MySQL are alternatives in responsibilities, not separate mandatory skills.",
+    "Education, years, communication, and problem-solving are not independently verified or scored by skill coverage. Responsibility text drives semantic relevance."
+  ]
+}

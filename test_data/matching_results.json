@@ -1,0 +1,248 @@
+[
+  {
+    "resume_id": "resume_01",
+    "jd_id": "job_synthetic",
+    "final_score": 90,
+    "scores": {
+      "semantic": 90,
+      "required": 90,
+      "preferred": 90,
+      "experience": 90,
+      "projects": 90
+    },
+    "requirements": [
+      {
+        "skill": "Java",
+        "required": true,
+        "match_type": "exact",
+        "evidence_level": "demonstrated",
+        "reason": "Explicit skill mention.",
+        "evidence": [
+          {
+            "page": 2,
+            "section": "projects",
+            "section_verified": true,
+            "quote": "Built a Java inventory application. Wrote SQL queries for reports."
+          }
+        ]
+      },
+      {
+        "skill": "SQL",
+        "required": true,
+        "match_type": "exact",
+        "evidence_level": "demonstrated",
+        "reason": "Explicit skill mention.",
+        "evidence": [
+          {
+            "page": 2,
+            "section": "projects",
+            "section_verified": true,
+            "quote": "Built a Java inventory application. Wrote SQL queries for reports."
+          }
+        ]
+      },
+      {
+        "skill": "Docker",
+        "required": false,
+        "match_type": "missing",
+        "evidence_level": "none",
+        "reason": "No evidence found.",
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "resume_id": "resume_02",
+    "jd_id": "job_synthetic",
+    "final_score": 75,
+    "scores": {
+      "semantic": 75,
+      "required": 75,
+      "preferred": 75,
+      "experience": 75,
+      "projects": 75
+    },
+    "requirements": [
+      {
+        "skill": "Java",
+        "required": true,
+        "match_type": "exact",
+        "evidence_level": "listed",
+        "reason": "Explicit skill mention.",
+        "evidence": [
+          {
+            "page": 1,
+            "section": "skills",
+            "section_verified": true,
+            "quote": "Java, SQL, Docker"
+          }
+        ]
+      },
+      {
+        "skill": "SQL",
+        "required": true,
+        "match_type": "exact",
+        "evidence_level": "listed",
+        "reason": "Explicit skill mention.",
+        "evidence": [
+          {
+            "page": 1,
+            "section": "skills",
+            "section_verified": true,
+            "quote": "Java, SQL, Docker"
+          }
+        ]
+      },
+      {
+        "skill": "Docker",
+        "required": false,
+        "match_type": "exact",
+        "evidence_level": "listed",
+        "reason": "Explicit skill mention.",
+        "evidence": [
+          {
+            "page": 1,
+            "section": "skills",
+            "section_verified": true,
+            "quote": "Java, SQL, Docker"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "resume_id": "resume_03",
+    "jd_id": "job_synthetic",
+    "final_score": 65,
+    "scores": {
+      "semantic": 65,
+      "required": 65,
+      "preferred": 65,
+      "experience": 65,
+      "projects": 65
+    },
+    "requirements": [
+      {
+        "skill": "Java",
+        "required": true,
+        "match_type": "exact",
+        "evidence_level": "listed",
+        "reason": "Explicit skill mention.",
+        "evidence": [
+          {
+            "page": 1,
+            "section": "skills",
+            "section_verified": true,
+            "quote": "Java"
+          }
+        ]
+      },
+      {
+        "skill": "SQL",
+        "required": true,
+        "match_type": "inferred",
+        "evidence_level": "demonstrated",
+        "reason": "Synthetic test rule: PostgreSQL query work provides related evidence for SQL; confirm the production rule with Person 2.",
+        "evidence": [
+          {
+            "page": 2,
+            "section": "projects",
+            "section_verified": true,
+            "quote": "Built reports using PostgreSQL queries."
+          }
+        ]
+      },
+      {
+        "skill": "Docker",
+        "required": false,
+        "match_type": "missing",
+        "evidence_level": "none",
+        "reason": "No evidence found.",
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "resume_id": "resume_04",
+    "jd_id": "job_synthetic",
+    "final_score": 45,
+    "scores": {
+      "semantic": 45,
+      "required": 45,
+      "preferred": 45,
+      "experience": 45,
+      "projects": 45
+    },
+    "requirements": [
+      {
+        "skill": "Java",
+        "required": true,
+        "match_type": "exact",
+        "evidence_level": "demonstrated",
+        "reason": "Explicit skill mention.",
+        "evidence": [
+          {
+            "page": 2,
+            "section": "projects",
+            "section_verified": true,
+            "quote": "Built a Java calculator."
+          }
+        ]
+      },
+      {
+        "skill": "SQL",
+        "required": true,
+        "match_type": "missing",
+        "evidence_level": "none",
+        "reason": "No evidence found.",
+        "evidence": []
+      },
+      {
+        "skill": "Docker",
+        "required": false,
+        "match_type": "missing",
+        "evidence_level": "none",
+        "reason": "No evidence found.",
+        "evidence": []
+      }
+    ]
+  },
+  {
+    "resume_id": "resume_05",
+    "jd_id": "job_synthetic",
+    "final_score": 0,
+    "scores": {
+      "semantic": 0,
+      "required": 0,
+      "preferred": 0,
+      "experience": 0,
+      "projects": 0
+    },
+    "requirements": [
+      {
+        "skill": "Java",
+        "required": true,
+        "match_type": "missing",
+        "evidence_level": "none",
+        "reason": "No evidence found.",
+        "evidence": []
+      },
+      {
+        "skill": "SQL",
+        "required": true,
+        "match_type": "missing",
+        "evidence_level": "none",
+        "reason": "No evidence found.",
+        "evidence": []
+      },
+      {
+        "skill": "Docker",
+        "required": false,
+        "match_type": "missing",
+        "evidence_level": "none",
+        "reason": "No evidence found.",
+        "evidence": []
+      }
+    ]
+  }
+]

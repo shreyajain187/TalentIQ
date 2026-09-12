@@ -1,0 +1,17 @@
+{
+  "id": "job_synthetic",
+  "filename": "synthetic_job.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "text": "Required: Java, SQL. Preferred: Docker. Develop backend applications."
+    }
+  ],
+  "fullText": "Required: Java, SQL. Preferred: Docker. Develop backend applications.",
+  "sections": {
+    "requirements": "Java, SQL",
+    "responsibilities": "Develop backend applications.",
+    "skills": "Java, SQL, Docker",
+    "qualifications": ""
+  }
+}
